@@ -3,19 +3,20 @@
     <ul class="cart-list">
       <li
         v-for="cartItem in cartItems"
-        :cart-item="cartItem"
         :key="cartItem.id"
         class="cart-list__item">
-        <span class="cart-list__item-name">item name</span>
-        <span class="cart-list__item-quantity">item quantity</span>
-        <span class="cart-list__item-subtotal">item subtotal</span>
+        <span class="cart-list__item-name">{{ cartItem.name }}</span>
+        <span class="cart-list__item-quantity">{{ cartItem.quantity }}</span>
+        <span class="cart-list__item-subtotal">
+          ${{ cartItem.price * cartItem.quantity / 100 }}
+        </span>
         <button class="cart-list__item-remove-button">
           <i class="fas fa-times"/>
         </button>
       </li>
     </ul>
     <li
-      class="cart__total">Total: $</li>
+      class="cart__total">Total: ${{ total }}</li>
   </div>
 </template>
 
@@ -31,11 +32,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-
-      'cartProducts',
-
-    ]),
+    ...mapGetters({
+      cartItems: 'cartProducts',
+    }),
+    total() {
+      return this.cartItems.reduce((total, cartItem) =>
+        total + (cartItem.price * cartItem.quantity), 0);
+    },
   },
 };
 

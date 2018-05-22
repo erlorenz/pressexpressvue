@@ -2,14 +2,13 @@
   <ul class="product-list">
     <li
       v-for="product in products"
-      :product="product"
       :key="product.id"
       class="product-list__list-item">
       <span class="product-list__item-name">{{ product.name }}</span>
       <span class="product-list__item-price"> ${{ product.price /100 }}</span>
       <button
         class="product-list__add-button"
-        @click="addProductToCart(product)">Add</button>
+        @click="addToCart(product)">Add</button>
     </li>
   </ul>
 
@@ -23,12 +22,13 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'TheProductList',
 
-  computed: mapGetters([
-    'allProducts',
-  ]),
+  computed: mapGetters({
+    products: 'allProducts',
+    length: 'getNumberOfProducts',
+  }),
 
   methods: mapActions([
-    'addProductToCart',
+    'addToCart',
   ]),
 };
 
