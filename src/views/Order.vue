@@ -28,23 +28,7 @@ export default {
 </script>
 
 
-<style scoped>
-.fade-page-enter-active {
-  transition: opacity 1s;
-}
-
-.fade-page-enter {
-  opacity: 0;
-}
-
-.slide-down-enter-active {
-  transition: transform 0.3s;
-}
-
-.slide-down-enter {
-  transform: translateY(-100%);
-}
-
+<style lang="scss" scoped>
 #order {
   background-color: var(--primary-theme-background-color);
 }

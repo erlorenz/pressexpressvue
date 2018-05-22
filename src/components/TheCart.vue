@@ -26,25 +26,25 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TheCart',
 
-
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     ...mapGetters({
       cartItems: 'cartProducts',
     }),
     total() {
-      return this.cartItems.reduce((total, cartItem) =>
-        total + (cartItem.price * cartItem.quantity), 0);
+      return this.cartItems.reduce(
+        // eslint-disable-next-line
+        (total, cartItem) => total + cartItem.price * cartItem.quantity,
+        0,
+      );
     },
   },
 };
-
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cart-list__item {
   background: white;
   font-weight: 600;

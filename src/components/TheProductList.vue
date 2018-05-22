@@ -16,7 +16,6 @@
 
 
 <script>
-
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -27,15 +26,12 @@ export default {
     length: 'getNumberOfProducts',
   }),
 
-  methods: mapActions([
-    'addToCart',
-  ]),
+  methods: mapActions(['addToCart']),
 };
-
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .product-list__list-item {
   background: white;
   font-weight: 600;

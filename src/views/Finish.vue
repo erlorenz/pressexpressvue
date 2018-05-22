@@ -22,7 +22,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 #choose {
   background-color: var(--main-theme-color);
   min-height: 100vh;

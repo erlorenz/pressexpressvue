@@ -10,9 +10,9 @@
     </h1>
     <div class="content-wrap">
       <the-product-list />
-      <the-cart />
+      <the-cart v-if="this.$store.state.cart.added.length > 0"/>
       <div
-
+        v-else
         class="no-items"> You haven't selected any items </div>
     </div>
     <router-link :to="{ name: 'finish' }">
@@ -32,22 +32,20 @@ import TheCart from '@/components/TheCart.vue';
 export default {
   name: 'Choose',
   components: {
-
     TheProductList,
     TheCart,
   },
   data() {
-    return {
-
-    };
+    return {};
   },
 };
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 #choose {
-  background-color: var(--main-theme-color);
+  background-color: blue;
+
   min-height: 100vh;
   text-align: center;
   padding: 100px 5%;
@@ -72,8 +70,8 @@ h1 {
 .product-list {
   display: block;
   width: 100%;
-  max-width: 600px;
-  box-shadow: var(--shadow-low);
+  max-width: 40rem;
+  box-shadow: none;
   margin-bottom: 3rem;
 }
 
@@ -84,8 +82,8 @@ h1 {
 .cart {
   display: block;
   width: 100%;
-  max-width: 600px;
-  box-shadow: var(--shadow-low);
+  max-width: 40rem;
+  box-shadow: none;
 }
 
 @media (min-width: 1024px) {
@@ -121,18 +119,5 @@ h1 {
   p {
     font-size: 1.5rem;
   }
-}
-
-/*---transitions----*/
-
-.mini-cart-slide-enter-active,
-.mini-cart-slide-leave-active {
-  transition: all 0.3s;
-}
-
-.mini-cart-slide-enter,
-.mini-cart-slide-leave-to {
-  opacity: 0;
-  transform: translateX(100%);
 }
 </style>

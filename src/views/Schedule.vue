@@ -26,7 +26,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 #schedule {
   background-color: var(--main-theme-color);
   min-height: 100vh;

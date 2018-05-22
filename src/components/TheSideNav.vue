@@ -34,16 +34,13 @@
 export default {
   name: 'TheSideNav',
   data() {
-    return {
-
-    };
+    return {};
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .side-nav {
   position: fixed;
   top: 0;

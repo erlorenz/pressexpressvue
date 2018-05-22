@@ -1,15 +1,9 @@
 <template>
   <div>
-    <transition name="slide-side-nav">
-      <the-side-nav
-        v-show="navIsOpen"
-        @closeNav="navIsOpen = false"/>
-    </transition>
-    <transition
-      name="slide-down-navbar"
-      appear>
-      <the-navbar @openNav="navIsOpen = true"/>
-    </transition>
+    <the-side-nav
+      v-show="navIsOpen"
+      @closeNav="navIsOpen = false"/>
+    <the-navbar @openNav="navIsOpen = true"/>
     <the-showcase />
     <section id="scroll">
       fdsfsd
@@ -38,28 +32,5 @@ export default {
 </script>
 
 
-<style scoped>
-#scroll {
-  height: 1000px;
-}
-
-.slide-down-navbar-enter-active,
-.slide-down-leave-active {
-  transition: all 0.4s;
-}
-
-.slide-down-navbar-enter,
-.slide-down-leave-to {
-  transform: translateY(-100%);
-}
-
-.slide-side-nav-enter-active,
-.slide-side-nav-leave-active {
-  transition: all 0.2s;
-}
-
-.slide-side-nav-enter,
-.slide-side-nav-leave-to {
-  transform: translateX(-100%);
-}
+<style lang="scss" scoped>
 </style>

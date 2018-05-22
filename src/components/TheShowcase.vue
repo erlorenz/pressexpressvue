@@ -30,10 +30,10 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 #showcase {
   min-height: 90vh;
-  background: var(--primary-theme-color) url('../assets/img/grey.jpg');
+  background: url('../assets/img/grey.jpg');
   background-position: center;
   background-size: cover;
   display: flex;
