@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   background-color: $navbar-color;
   display: flex;
   align-items: center;

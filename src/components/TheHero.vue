@@ -35,7 +35,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding-top: 0;
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 .content-wrap {

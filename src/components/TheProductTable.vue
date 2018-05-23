@@ -80,6 +80,7 @@ th {
     background-color: $theme-color-primary-light;
     color: #eee;
     font-weight: 600;
+    cursor: pointer;
   }
 }
 </style>

@@ -91,7 +91,7 @@ export default {
 
 @media (min-width: 768px) {
   .progress {
-    font-size: 1.1rem;
+    font-size: 1rem;
     height: 4rem;
   }
   .fa-clock,
@@ -107,7 +107,7 @@ export default {
 
 @media (min-width: 992px) {
   .progress {
-    font-size: 1.2rem;
+    font-size: 1rem;
     height: 4.5rem;
   }
 
