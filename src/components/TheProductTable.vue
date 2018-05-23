@@ -57,10 +57,6 @@ th {
   height: $table-height;
 }
 
-.product-table__header-name {
-  text-align: right;
-}
-
 .product-table__name {
   text-align: left;
   padding-left: 5%;

@@ -70,12 +70,13 @@ h1 {
   max-width: 35rem;
   margin-bottom: 4rem;
   box-shadow: $shadow-high;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .cart {
   width: 100%;
   max-width: 35rem;
+  box-shadow: $shadow-high;
 }
 
 @media (min-width: 1024px) {
@@ -93,6 +94,17 @@ h1 {
 
   p {
     font-size: 1.5rem;
+  }
+
+  .content-wrap {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  .cart,
+  .product-table {
+    width: 45%;
   }
 }
 </style>

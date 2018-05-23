@@ -1,23 +1,32 @@
 <template>
-  <div class="cart">
-    <ul class="cart-list">
-      <li
-        v-for="cartItem in cartItems"
-        :key="cartItem.id"
-        class="cart-list__item">
-        <span class="cart-list__item-name">{{ cartItem.name }}</span>
-        <span class="cart-list__item-quantity">{{ cartItem.quantity }}</span>
-        <span class="cart-list__item-subtotal">
-          ${{ cartItem.price * cartItem.quantity / 100 }}
-        </span>
-        <button class="cart-list__item-remove-button">
+
+  <table class="cart">
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+      <th colspan="2">Total</th>
+    </tr>
+    <tr
+      v-for="cartItem in cartItems"
+      :key="cartItem.id"
+      class="item">
+      <td class="item-name">{{ cartItem.name }}</td>
+      <td class="item-quantity">{{ cartItem.quantity }}</td>
+      <td class="item-total">
+        ${{ cartItem.price * cartItem.quantity / 100 }}
+      </td>
+      <td class="item-remove">
+        <button >
           <i class="fas fa-times"/>
         </button>
-      </li>
-    </ul>
-    <li
-      class="cart__total">Total: ${{ total }}</li>
-  </div>
+      </td>
+    </tr>
+    <tr class="promo-code" />
+    <tr
+      class="total">
+      <td colspan="2"/>
+    <td colspan="2">Total: ${{ total /100 }}</td></tr>
+  </table>
 </template>
 
 <script>
@@ -29,6 +38,7 @@ export default {
   data() {
     return {};
   },
+
   computed: {
     ...mapGetters({
       cartItems: 'cartProducts',
@@ -41,68 +51,49 @@ export default {
       );
     },
   },
+
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-.cart-list__item {
-  background: white;
-  font-weight: 600;
-  height: var(--product-list-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+table,
+th,
+td {
+  border-collapse: collapse;
+  background-color: white;
 }
 
-.cart-list__item-name {
-  display: inline-block;
-  width: 35%;
+td {
+  border-top: 1px solid rgba(black, 0.2);
+  height: $table-height;
+}
+
+th {
+  height: $table-height;
+}
+
+.item-name {
+  padding-left: 5%;
   text-align: left;
-  background: white;
 }
 
-.cart-list__item-quantity {
-  display: inline-block;
-  width: 20%;
+.item-total,
+.item-quantity {
   text-align: right;
-  background: white;
 }
 
-.cart-list__item-subtotal {
-  display: inline-block;
-  width: 20%;
+.item-remove {
   text-align: right;
-  background: white;
-}
+  padding-right: 3%;
 
-.cart-list__remove-button {
-  background: rgb(57, 66, 90);
-  border: none;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 600;
-  border-radius: 2px;
-  cursor: pointer;
-  padding: 5px;
-  width: 23%;
-}
-
-.cart-list__remove-button:active {
-  background: rgb(86, 92, 121);
-}
-
-.cart-list__remove-button:focus {
-  outline: none;
-}
-
-.cart__total {
-  background: white;
-  font-weight: 500;
-  line-height: 60px;
-  text-align: right;
-  padding: 0 5%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  button {
+    border: none;
+    background-color: $theme-color-accent;
+    height: 75%;
+    width: 2rem;
+    color: #eee;
+  }
 }
 </style>
+
