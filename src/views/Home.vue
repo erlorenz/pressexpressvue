@@ -4,7 +4,7 @@
       v-show="navIsOpen"
       @closeNav="navIsOpen = false"/>
     <the-navbar @openNav="navIsOpen = true"/>
-    <the-showcase />
+    <the-hero />
     <section id="scroll">
       fdsfsd
     </section>
@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import TheShowcase from '@/components/TheShowcase.vue';
+import TheHero from '@/components/TheHero.vue';
 import TheNavbar from '@/components/TheNavbar.vue';
 import TheSideNav from '@/components/TheSideNav.vue';
 
 export default {
   name: 'Home',
   components: {
-    TheShowcase,
+    TheHero,
     TheNavbar,
     TheSideNav,
   },

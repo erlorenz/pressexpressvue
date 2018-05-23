@@ -1,6 +1,5 @@
 <template>
   <section id="choose">
-    <transition name="mini-cart-slide"/>
 
     <h1>Sounds good- we're on it!
       <span class="desktop-directions">Now add your items to the list
@@ -8,6 +7,7 @@
       <span class= "mobile-directions">Now choose the items you'll be giving us.
       You can view and edit your totals by scrolling down or clicking the total items above.</span>
     </h1>
+
     <div class="content-wrap">
       <the-product-list />
       <the-cart v-if="this.$store.state.cart.added.length > 0"/>
@@ -15,6 +15,7 @@
         v-else
         class="no-items"> You haven't selected any items </div>
     </div>
+
     <router-link :to="{ name: 'finish' }">
       Go to finish
     </router-link>
@@ -44,9 +45,6 @@ export default {
 
 <style lang="scss" scoped>
 #choose {
-  background-color: blue;
-
-  min-height: 100vh;
   text-align: center;
   padding: 100px 5%;
 }
@@ -73,10 +71,10 @@ h1 {
   max-width: 40rem;
   box-shadow: none;
   margin-bottom: 3rem;
-}
 
-.product-list:last-child {
-  border-bottom: none;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .cart {

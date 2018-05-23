@@ -1,16 +1,7 @@
 <template>
   <div id="order">
-    <transition
-      name="slide-down"
-      appear>
-      <the-progress-bar />
-    </transition>
-    <transition
-      name="fade-page"
-      mode="out-in"
-      appear>
-      <router-view />
-    </transition>
+    <the-progress-bar />
+    <router-view />
   </div>
 
 </template>
@@ -30,6 +21,6 @@ export default {
 
 <style lang="scss" scoped>
 #order {
-  background-color: var(--primary-theme-background-color);
+  background-color: $theme-color-secondary;
 }
 </style>

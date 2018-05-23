@@ -6,25 +6,18 @@
         @click="$emit('closeNav')"><i class="fas fa-times fa-2x"/></span>
     </div>
     <ul class="side-nav__list">
-      <li class="side-nav__list-item">
+      <li>
         <a
-          href="#"
-          class="side-nav__list-link">Schedule</a>
+          href="#">Schedule</a>
       </li>
-      <li class="side-nav__list-item">
-        <a
-          href="#"
-          class="side-nav__list-link">Our Services</a>
+      <li>
+        <a href="#">Our Services</a>
       </li>
-      <li class="side-nav__list-item">
-        <a
-          href="#"
-          class="side-nav__list-link">Why Us</a>
+      <li>
+        <a href="#">Why Us</a>
       </li>
-      <li class="side-nav__list-item close">
-        <a
-          href="#"
-          class="side-nav__list-link">Contact</a>
+      <li>
+        <a href="#">Contact</a>
       </li>
     </ul>
   </nav>
@@ -48,40 +41,43 @@ export default {
   box-sizing: border-box;
   z-index: 5;
   background-color: white;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--primary-theme-color);
+  background-color: $theme-color-primary;
   font-weight: 500;
 }
 
 .side-nav__top {
-  height: 60px;
+  height: 3.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-.side-nav__close-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
+
+  .side-nav__close-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+
+    .fa-times {
+      color: white;
+    }
+  }
 }
 
-.fa-times {
-  color: white;
-}
+.side-nav__list {
+  li {
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 
-.side-nav__list-item {
-  text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.side-nav__list-link {
-  line-height: 60px;
-  padding-left: 30px;
-  color: white;
-  display: block;
+    a {
+      line-height: 3.5rem;
+      padding-left: 2rem;
+      color: white;
+      display: block;
+    }
+  }
 }
 </style>

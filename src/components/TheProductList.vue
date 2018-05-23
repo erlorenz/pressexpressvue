@@ -1,5 +1,26 @@
 <template>
-  <ul class="product-list">
+  <div>
+
+    <table class="product-table">
+      <tr class="product-table__header">
+        <th class="product-table__header-name">Item</th>
+        <th class="product-table__header-price">Price</th>
+        <th/>
+      </tr>
+      <tr
+        v-for="product in products"
+        :key="product.id">
+        <td class="product-table__name">{{ product.name }}</td>
+        <td class="product-table__price">${{ product.price /100 }}</td>
+        <td class="product-table__add">
+          <button
+            class="product-list__add-button"
+            @click="addToCart(product)">Add</button>
+        </td>
+      </tr>
+    </table>
+
+
     <li
       v-for="product in products"
       :key="product.id"
@@ -10,7 +31,8 @@
         class="product-list__add-button"
         @click="addToCart(product)">Add</button>
     </li>
-  </ul>
+
+  </div>
 
 </template>
 

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'TheShowcase',
+  name: 'TheHero',
 };
 </script>
 
@@ -35,6 +35,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding-top: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 }
 
 .content-wrap {
@@ -61,6 +62,24 @@ export default {
   }
 }
 
+.hero__button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 15px 40px;
+  font-size: 22px;
+  box-shadow: $shadow-high;
+  background: $button-color;
+
+  &:hover {
+    background-color: $button-color-hover;
+  }
+
+  &:active {
+    background-color: $button-color-active;
+  }
+}
+
 @media (min-width: 768px) {
   .content-wrap {
     font-size: 2.5rem;
@@ -76,15 +95,5 @@ export default {
     margin-top: 72px;
     font-size: 2.8rem;
   }
-}
-
-.hero__button {
-  border: none;
-  cursor: pointer;
-  color: white;
-  padding: 15px 40px;
-  font-size: 22px;
-  box-shadow: $shadow-high;
-  background: $button-color;
 }
 </style>

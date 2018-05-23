@@ -12,7 +12,9 @@
       class="navbar__menu-button">
       <button
         @click="$emit('openNav')">
-        <i class="fas fa-bars fa-2x"/>
+        <i
+          id="hamburger"
+          class="fas fa-bars fa-2x"/>
       </button>
     </div>
 
@@ -56,6 +58,7 @@ export default {
   top: 0;
   width: 100%;
   box-shadow: $shadow-low;
+  z-index: 1;
 }
 
 .navbar__brand {
@@ -80,6 +83,16 @@ export default {
     background: white;
     height: 3.5rem;
     width: 3.5rem;
+    border-radius: 50%;
+    color: $text-color-primary;
+
+    &:active {
+      background-color: #eee;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
