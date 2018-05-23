@@ -4,23 +4,7 @@
     <div class="content-wrap">
       <h3>Awesome! Let's choose when you will be ready for
       us to pick up and when we need to return your clothes!</h3>
-      <div class="schedule-form">
-        <input
-          type="text"
-          placeholder="What hotel are you in?" >
-      </div>
-      <div class="forward-back">
-        <router-link
-          :to="{ name: 'home' }"
-          class="back-button">
-          Go back
-        </router-link>
-        <router-link
-          :to="{ name: 'choose' }"
-          class="forward-button">
-          Choose Items
-        </router-link>
-      </div>
+      <the-schedule-form/>
     </div>
   </section>
 
@@ -28,9 +12,13 @@
 
 
 <script>
+import TheScheduleForm from '@/components/TheScheduleForm.vue';
+
 export default {
   name: 'Schedule',
-  components: {},
+  components: {
+    TheScheduleForm,
+  },
 };
 </script>
 
@@ -44,26 +32,12 @@ export default {
   justify-content: center;
 }
 
-.content-wrap {
-  max-width: 768px;
+.schedule-form {
+  margin: 2rem 0;
 }
 
-.forward-back {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  .back-button,
-  .forward-button {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-  }
-
-  .forward-button {
-    background-color: $theme-color-secondary;
-    color: #eee;
-  }
+.content-wrap {
+  max-width: 768px;
 }
 </style>
 

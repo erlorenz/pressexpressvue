@@ -55,7 +55,7 @@ export default {
 }
 
 h1 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 2rem;
 }
@@ -86,6 +86,7 @@ h1 {
 
 .no-items {
   margin-bottom: 2rem;
+  font-size: 1.1rem;
 }
 
 .forward-back {
@@ -119,10 +120,6 @@ h1 {
     width: 45%;
     max-width: 35rem;
     margin-top: 3rem;
-  }
-
-  p {
-    font-size: 1.5rem;
   }
 
   .content-wrap {
