@@ -16,7 +16,7 @@
         ${{ cartItem.price * cartItem.quantity / 100 }}
       </td>
       <td class="item-remove">
-        <button >
+        <button @click="REMOVE_FROM_CART(cartItem)">
           <i class="fas fa-times"/>
         </button>
       </td>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'TheCart',
@@ -52,7 +52,7 @@ export default {
     },
   },
 
-  methods: {},
+  methods: mapMutations(['REMOVE_FROM_CART']),
 };
 </script>
 
@@ -67,6 +67,7 @@ td {
 td {
   border-top: 1px solid rgba(black, 0.2);
   height: $table-height;
+  font-weight: 600;
 }
 
 th {
@@ -76,23 +77,35 @@ th {
 .item-name {
   padding-left: 5%;
   text-align: left;
+  width: 40%;
 }
 
-.item-total,
 .item-quantity {
   text-align: right;
+  width: 15%;
+}
+
+.item-total {
+  text-align: right;
+  width: 25%;
 }
 
 .item-remove {
   text-align: right;
   padding-right: 3%;
+  width: 20%;
+
+  i {
+    color: $text-color-primary;
+  }
 
   button {
     border: none;
-    background-color: $theme-color-accent;
-    height: 75%;
+    background-color: white;
+    height: 100%;
     width: 2rem;
-    color: #eee;
+    color: $text-color-primary;
+    cursor: pointer;
   }
 }
 </style>

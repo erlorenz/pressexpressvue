@@ -16,14 +16,19 @@
         class="no-items"> You haven't selected any items </div>
     </div>
 
-    <router-link :to="{ name: 'finish' }">
-      Go to finish
-    </router-link>
-
-  </section>
-
-
-</template>
+    <div class="forward-back">
+      <router-link
+        :to="{ name: 'schedule' }"
+        class="back-button">
+        Go back
+      </router-link>
+      <router-link
+        :to="{ name: 'finish' }"
+        class="forward-button">
+        Go to finish
+      </router-link>
+    </div>
+</section></template>
 
 
 <script>
@@ -46,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 #choose {
   text-align: center;
-  padding: 100px 5% 0 5%;
+  padding: 100px 5% 5% 5%;
 }
 
 h1 {
@@ -68,15 +73,35 @@ h1 {
 .product-table {
   width: 100%;
   max-width: 35rem;
-  margin-bottom: 4rem;
-  box-shadow: $shadow-high;
-  border-radius: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .cart {
   width: 100%;
   max-width: 35rem;
-  box-shadow: $shadow-high;
+  margin-bottom: 2rem;
+}
+
+.no-items {
+  margin-bottom: 2rem;
+}
+
+.forward-back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .back-button,
+  .forward-button {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .forward-button {
+    background-color: $theme-color-secondary;
+    color: #eee;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -90,6 +115,8 @@ h1 {
 
   .no-items {
     width: 45%;
+    max-width: 35rem;
+    margin-top: 3rem;
   }
 
   p {

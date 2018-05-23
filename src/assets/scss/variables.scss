@@ -1,12 +1,11 @@
-$theme-color-primary: #2878e0;
-$theme-color-secondary: #cadde7;
-$theme-color-accent: teal;
+$theme-color-primary: #1d7a8c;
+$theme-color-primary-dark: #024d5b;
+$theme-color-primary-light: #5ba5b2;
+$theme-color-secondary: #c93556;
+$theme-color-secondary-dark: darken($theme-color-secondary, 10%);
 $text-color-primary: rgb(68, 68, 68);
 $text-color-secondary: #757b81;
 $text-color-light: rgb(172, 172, 172);
-$button-color: #cc2917;
-$button-color-hover: darken($button-color, 15%);
-$button-color-active: lighten($button-color, 15%);
 $hero-overlay: rgba(40, 44, 52, 0.8);
 $navbar-color: white;
 $shadow-low: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
@@ -14,4 +13,4 @@ $shadow-low: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
 $shadow-high: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
   0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 
-$table-height: 2.3rem;
+$table-height: 2.8rem;

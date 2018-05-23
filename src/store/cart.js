@@ -4,7 +4,6 @@ import products from '@/store/products';
 /* eslint no-param-reassign: ["error",
 { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
 
-
 const state = {
   added: [],
   all: products,
@@ -15,24 +14,20 @@ const state = {
 const getters = {
   allProducts: state => state.all,
 
-  cartProducts: state => state.added.map(({
-    id,
-    quantity,
-  }) => {
-    const product = state.all.find(p => p.id === id);
-    return {
-      name: product.name,
-      price: product.price,
-      quantity,
-    };
-  }),
+  cartProducts: state =>
+    state.added.map(({ id, quantity }) => {
+      const product = state.all.find(p => p.id === id);
+      return {
+        name: product.name,
+        price: product.price,
+        quantity,
+      };
+    }),
 };
 
 // actions
 const actions = {
-  addToCart: ({
-    commit,
-  }, product) => {
+  addToCart: ({ commit }, product) => {
     commit('ADD_TO_CART', {
       id: product.id,
     });
@@ -40,9 +35,7 @@ const actions = {
 };
 
 const mutations = {
-  ADD_TO_CART: (state, {
-    id,
-  }) => {
+  ADD_TO_CART: (state, { id }) => {
     const record = state.added.find(p => p.id === id);
 
     if (!record) {
@@ -55,8 +48,11 @@ const mutations = {
     }
   },
 
+  REMOVE_FROM_CART: (state, { id }) => {
+    const itemIndex = state.added.indexOf(id);
+    state.added.splice(itemIndex, 1);
+  },
 };
-
 
 export default {
   state,

@@ -9,9 +9,18 @@
           type="text"
           placeholder="What hotel are you in?" >
       </div>
-      <router-link :to="{ name: 'choose' }">
-        Go to choose
-      </router-link>
+      <div class="forward-back">
+        <router-link
+          :to="{ name: 'home' }"
+          class="back-button">
+          Go back
+        </router-link>
+        <router-link
+          :to="{ name: 'choose' }"
+          class="forward-button">
+          Choose Items
+        </router-link>
+      </div>
     </div>
   </section>
 
@@ -28,7 +37,6 @@ export default {
 
 <style lang="scss" scoped>
 #schedule {
-  background-color: var(--main-theme-color);
   min-height: 100vh;
   text-align: center;
   padding: 100px 5%;
@@ -38,6 +46,24 @@ export default {
 
 .content-wrap {
   max-width: 768px;
+}
+
+.forward-back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .back-button,
+  .forward-button {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .forward-button {
+    background-color: $theme-color-secondary;
+    color: #eee;
+  }
 }
 </style>
 

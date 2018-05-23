@@ -20,13 +20,15 @@
 
     <ul class="navbar__list">
       <li>
-        <a href="#">Schedule Now</a>
+        <a
+          href="#"
+          class="navbar__schedule-link">Schedule Now</a>
       </li>
       <li>
         <a href="#">Our Services</a>
       </li>
       <li>
-        <a href="#">Contact</a>
+        <a href="#">Contact Us</a>
       </li>
     </ul>
 
@@ -48,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   background-color: $navbar-color;
   display: flex;
   align-items: center;
@@ -65,12 +67,8 @@ export default {
   display: inline-block;
   margin-right: auto;
   padding-left: 3%;
-  padding-top: 0.5rem;
-
-  img {
-    height: 2rem;
-    width: 12rem;
-  }
+  padding-top: 0.6rem;
+  height: 100%;
 }
 
 .navbar__list {
@@ -99,6 +97,8 @@ export default {
 @media (min-width: 992px) {
   .navbar {
     height: 4.5rem;
+    background-color: white;
+    box-shadow: $shadow-low;
   }
   .navbar__menu-button {
     display: none;
@@ -106,12 +106,7 @@ export default {
 
   .navbar__brand {
     padding-left: 8%;
-    padding-top: 0.8rem;
-
-    img {
-      height: 2.5rem;
-      width: 15rem;
-    }
+    padding-top: 1rem;
   }
 
   .navbar__list {
@@ -124,8 +119,14 @@ export default {
 
       a {
         color: $text-color-primary;
+
         line-height: 4.5rem;
         padding: 0 2rem;
+
+        &.navbar__schedule-link {
+          color: $theme-color-secondary;
+          font-weight: 600;
+        }
 
         &:hover {
           background-color: #eee;

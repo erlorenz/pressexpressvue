@@ -51,6 +51,7 @@ td {
 td {
   border-top: 1px solid rgba(black, 0.2);
   height: $table-height;
+  font-weight: 600;
 }
 
 th {
@@ -76,7 +77,7 @@ th {
     height: 75%;
     width: 80%;
     border: none;
-    background-color: $theme-color-accent;
+    background-color: $theme-color-primary-light;
     color: #eee;
   }
 }
