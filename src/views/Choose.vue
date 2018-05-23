@@ -9,7 +9,7 @@
     </h1>
 
     <div class="content-wrap">
-      <the-product-list />
+      <the-product-table />
       <the-cart v-if="this.$store.state.cart.added.length > 0"/>
       <div
         v-else
@@ -27,13 +27,13 @@
 
 
 <script>
-import TheProductList from '@/components/TheProductList.vue';
+import TheProductTable from '@/components/TheProductTable.vue';
 import TheCart from '@/components/TheCart.vue';
 
 export default {
   name: 'Choose',
   components: {
-    TheProductList,
+    TheProductTable,
     TheCart,
   },
   data() {
@@ -65,23 +65,17 @@ h1 {
   align-items: center;
 }
 
-.product-list {
-  display: block;
+.product-table {
   width: 100%;
-  max-width: 40rem;
-  box-shadow: none;
-  margin-bottom: 3rem;
-
-  &:last-child {
-    border-bottom: none;
-  }
+  max-width: 35rem;
+  margin-bottom: 4rem;
+  box-shadow: $shadow-high;
+  border-radius: 2px;
 }
 
 .cart {
-  display: block;
   width: 100%;
-  max-width: 40rem;
-  box-shadow: none;
+  max-width: 35rem;
 }
 
 @media (min-width: 1024px) {
@@ -91,23 +85,6 @@ h1 {
 
   .mobile-directions {
     display: none;
-  }
-  .content-wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start;
-  }
-
-  .product-list {
-    margin: 0;
-    width: 45%;
-  }
-
-  .cart {
-    width: 45%;
-    margin: 0;
-    background: white;
   }
 
   .no-items {
