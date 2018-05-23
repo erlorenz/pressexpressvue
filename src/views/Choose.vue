@@ -74,12 +74,14 @@ h1 {
   width: 100%;
   max-width: 35rem;
   margin-bottom: 2rem;
+  box-shadow: $shadow-high;
 }
 
 .cart {
   width: 100%;
   max-width: 35rem;
   margin-bottom: 2rem;
+  box-shadow: $shadow-high;
 }
 
 .no-items {

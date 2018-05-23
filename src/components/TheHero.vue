@@ -68,6 +68,7 @@ export default {
   padding: 1em 2.5em;
   font-size: 1em;
   box-shadow: $shadow-low;
+  box-shadow: none;
   background: $theme-color-secondary;
 
   &:hover {
