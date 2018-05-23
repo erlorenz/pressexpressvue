@@ -55,6 +55,7 @@ export default {
   display: flex;
   align-items: center;
   text-align: center;
+
   height: 3.5rem;
   position: fixed;
   top: 0;

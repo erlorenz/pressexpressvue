@@ -83,8 +83,6 @@ export default {
 
 @media (min-width: 350px) {
   .progress {
-    font-size: 1rem;
-
     .fa-chevron-right {
       margin-right: 0.8rem;
     }
