@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
 #choose {
   text-align: center;
-  padding: 100px 5%;
+  padding: 100px 5% 0 5%;
 }
 
 h1 {
@@ -70,7 +70,7 @@ h1 {
   max-width: 35rem;
   margin-bottom: 4rem;
   box-shadow: $shadow-high;
-  border-radius: 12px;
+  border-radius: 0.5rem;
 }
 
 .cart {
