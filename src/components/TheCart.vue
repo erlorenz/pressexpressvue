@@ -25,7 +25,7 @@
     <tr
       class="total">
       <td colspan="2"/>
-    <td colspan="2">Total: ${{ total /100 }}</td></tr>
+    <td colspan="2">Total: ${{ cartTotal /100 }}</td></tr>
   </table>
 </template>
 
@@ -40,16 +40,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      cartItems: 'cartProducts',
-    }),
-    total() {
-      return this.cartItems.reduce(
-        // eslint-disable-next-line
-        (total, cartItem) => total + cartItem.price * cartItem.quantity,
-        0,
-      );
-    },
+    ...mapGetters([
+      'cartItems',
+      'cartTotal',
+    ]),
   },
 
   methods: {

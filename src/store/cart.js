@@ -14,19 +14,11 @@ const state = {
 const getters = {
   allProducts: state => state.all,
 
-  cartProducts: state =>
-    state.added.map(({
-      id,
-      quantity,
-    }) => {
-      const product = state.all.find(p => p.id === id);
-      return {
-        name: product.name,
-        price: product.price,
-        quantity,
-        id: product.id,
-      };
-    }),
+  cartItems: state =>
+    state.added,
+
+  cartTotal: state => state.added.reduce((total, cartItem) =>
+    total + (cartItem.price * cartItem.quantity), 0),
 };
 
 // actions
@@ -36,13 +28,17 @@ const actions = {
 
 const mutations = {
   ADD_TO_CART: (state, {
+    price,
     id,
+    name,
   }) => {
     const record = state.added.find(p => p.id === id);
-    console.log(record);
+
 
     if (!record) {
       state.added.push({
+        name,
+        price,
         id,
         quantity: 1,
       });
@@ -55,7 +51,6 @@ const mutations = {
     id,
   }) => {
     const itemIndex = state.added.findIndex(p => p.id === id);
-    console.log(itemIndex);
     state.added.splice(itemIndex, 1);
   },
 };

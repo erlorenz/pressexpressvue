@@ -32,7 +32,6 @@ export default {
 
   computed: mapGetters({
     products: 'allProducts',
-    length: 'getNumberOfProducts',
   }),
 
   methods: mapMutations(['ADD_TO_CART']),
@@ -78,7 +77,7 @@ th {
     width: 80%;
     border: none;
     background-color: $theme-color-primary-light;
-    color: #eee;
+    color: white;
     font-weight: 600;
     cursor: pointer;
   }

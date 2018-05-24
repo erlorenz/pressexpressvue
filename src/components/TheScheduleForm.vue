@@ -68,10 +68,12 @@
         Go back
       </router-link>
       <router-link
-        :to="{ name: 'choose' }"
-        tag="button"
-        class="forward-button">
-        Choose Items
+        :to="{ name: 'choose' }">
+        <button
+          type="submit"
+          class="forward-button"
+          @click="ADD_TO_SCHEDULED(scheduled)">Continue</button>
+
       </router-link>
     </div>
 
@@ -81,6 +83,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'TheScheduleForm',
 
@@ -96,6 +100,13 @@ export default {
       },
     };
   },
+
+  methods: {
+    ...mapMutations([
+      'ADD_TO_SCHEDULED',
+    ]),
+  },
+
 };
 </script>
 
