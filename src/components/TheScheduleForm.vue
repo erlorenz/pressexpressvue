@@ -86,7 +86,7 @@ export default {
 
   data() {
     return {
-      scheduleForm: {
+      scheduled: {
         hotel: '',
         room: '',
         pickupDay: '',
