@@ -15,7 +15,7 @@
       <td class="product-table__price">${{ product.price /100 }}</td>
       <td class="product-table__add">
         <button
-          @click="addToCart(product)">Add</button>
+          @click="ADD_TO_CART(product)">Add</button>
       </td>
     </tr>
   </table>
@@ -25,7 +25,7 @@
 
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'TheProductTable',
@@ -35,7 +35,7 @@ export default {
     length: 'getNumberOfProducts',
   }),
 
-  methods: mapActions(['addToCart']),
+  methods: mapMutations(['ADD_TO_CART']),
 };
 </script>
 

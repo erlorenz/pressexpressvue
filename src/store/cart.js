@@ -31,14 +31,6 @@ const getters = {
 
 // actions
 const actions = {
-  addToCart: ({
-    commit,
-  }, product) => {
-    commit('ADD_TO_CART', {
-      id: product.id,
-    });
-  },
-
 
 };
 
@@ -47,6 +39,7 @@ const mutations = {
     id,
   }) => {
     const record = state.added.find(p => p.id === id);
+    console.log(record);
 
     if (!record) {
       state.added.push({

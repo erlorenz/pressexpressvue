@@ -52,7 +52,11 @@ export default {
     },
   },
 
-  methods: mapMutations(['REMOVE_FROM_CART']),
+  methods: {
+    ...mapMutations([
+      'REMOVE_FROM_CART',
+    ]),
+  },
 };
 </script>
 
