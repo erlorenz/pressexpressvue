@@ -5,6 +5,8 @@ import Order from '@/views/Order.vue';
 import Schedule from '@/views/Schedule.vue';
 import Choose from '@/views/Choose.vue';
 import Finish from '@/views/Finish.vue';
+import Admin from '@/views/Admin.vue';
+
 
 Vue.use(Router);
 
@@ -33,7 +35,13 @@ export default new Router({
       name: 'finish',
       component: Finish,
     },
+
     ],
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin,
   },
   ],
 });
