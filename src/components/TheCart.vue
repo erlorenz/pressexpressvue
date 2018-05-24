@@ -7,7 +7,7 @@
       <th colspan="2">Total</th>
     </tr>
     <tr
-      v-for="cartItem in cartItems"
+      v-for="(cartItem, index) in cartItems"
       :key="cartItem.id"
       class="item">
       <td class="item-name">{{ cartItem.name }}</td>
@@ -16,7 +16,7 @@
         ${{ cartItem.price * cartItem.quantity / 100 }}
       </td>
       <td class="item-remove">
-        <button @click="REMOVE_FROM_CART(cartItem)">
+        <button @click="REMOVE_FROM_CART(index)">
           <i class="fas fa-times"/>
         </button>
       </td>
