@@ -21,6 +21,12 @@
         </button>
       </td>
     </tr>
+    <tr v-if="shirtOptions">
+      SHIRT OPTIONS
+    </tr>
+    <tr v-if="pantsOptions">
+      PANTS OPTIONS
+    </tr>
     <tr class="promo-code" />
     <tr
       class="total">
@@ -30,20 +36,26 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'TheCart',
 
   data() {
-    return {};
+    return {
+      shirtOptions: false,
+      pantsOptions: false,
+    };
   },
 
   computed: {
     ...mapGetters([
-      'cartItems',
       'cartTotal',
     ]),
+    ...mapState({
+      cartItems: state => state.cart.added,
+    }),
+
   },
 
   methods: {

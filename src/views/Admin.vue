@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import db from '../firebase/firebaseInit';
 
 export default {
   name: 'Admin',
@@ -17,12 +16,6 @@ export default {
       employees: [],
     };
   },
-  created() {
-    db.collection('orders').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data());
-      });
-    });
-  },
+
 };
 </script>

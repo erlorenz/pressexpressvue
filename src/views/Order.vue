@@ -22,5 +22,6 @@ export default {
 <style lang="scss" scoped>
 #order {
   background-color: rgba(213, 214, 216, 1);
+  min-height: 100vh;
 }
 </style>

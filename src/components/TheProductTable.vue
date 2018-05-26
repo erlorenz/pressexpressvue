@@ -25,13 +25,13 @@
 
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'TheProductTable',
 
-  computed: mapGetters({
-    products: 'allProducts',
+  computed: mapState({
+    products: state => state.cart.all,
   }),
 
   methods: mapMutations(['ADD_TO_CART']),
