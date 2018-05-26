@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapState } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'TheCart',
@@ -51,10 +51,8 @@ export default {
   computed: {
     ...mapGetters([
       'cartTotal',
+      'cartItems',
     ]),
-    ...mapState({
-      cartItems: state => state.cart.added,
-    }),
 
   },
 
