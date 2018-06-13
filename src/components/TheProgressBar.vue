@@ -55,6 +55,7 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
 
   li {
     display: inline-block;
@@ -65,7 +66,6 @@ export default {
 
     &.active {
       color: $theme-color-primary;
-      font-weight: 600;
     }
   }
 }

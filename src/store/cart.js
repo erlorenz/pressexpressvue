@@ -14,26 +14,21 @@ const state = {
 const getters = {
   allProducts: state => state.all,
 
-  cartItems: state =>
-    state.added,
+  cartItems: state => state.added,
 
-  cartTotal: state => state.added.reduce((total, cartItem) =>
-    total + (cartItem.price * cartItem.quantity), 0),
+  cartTotal: state =>
+    state.added.reduce((acc, cartItem) => {
+      const totalPrice = cartItem.price * cartItem.quantity;
+      return acc + totalPrice;
+    }, 0),
 };
 
 // actions
-const actions = {
-
-};
+const actions = {};
 
 const mutations = {
-  ADD_TO_CART: (state, {
-    price,
-    id,
-    name,
-  }) => {
+  ADD_TO_CART: (state, { price, id, name }) => {
     const record = state.added.find(p => p.id === id);
-
 
     if (!record) {
       state.added.push({
