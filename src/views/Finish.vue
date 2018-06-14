@@ -43,6 +43,7 @@ export default {
 }
 
 .content-wrap {
+  width: 100%;
   max-width: 768px;
 }
 </style>

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 import cart from './cart';
 import scheduled from './scheduled';
+import checkout from './checkout';
 
 Vue.use(Vuex);
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
   modules: {
     cart,
     scheduled,
+    checkout,
   },
 
   plugins: [vuexLocal.plugin],

@@ -22,7 +22,7 @@ const getters = {
       return acc + totalPrice;
     }, 0),
 
-  totalPrice: (getters) => {
+  totalPrice: (state, getters) => {
     if (getters.cartTotal < 3000) {
       return 3000;
     }
