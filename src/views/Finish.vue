@@ -2,6 +2,7 @@
 
   <section id="choose">
     <div class="content-wrap">
+      <the-final />
       <the-checkout/>
 
     </div>
@@ -13,12 +14,20 @@
 
 
 <script>
-import TheCheckout from '@/components/TheCheckout.vue';
+import TheCheckout from '../components/TheCheckout.vue';
+import TheFinal from '../components/TheFinal.vue';
 
 export default {
   name: 'Finish',
   components: {
     TheCheckout,
+    TheFinal,
+  },
+
+  data() {
+    return {
+      success: false,
+    };
   },
 };
 </script>

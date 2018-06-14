@@ -34,8 +34,8 @@
 
 
 <script>
-import TheProductTable from '@/components/TheProductTable.vue';
-import TheCart from '@/components/TheCart.vue';
+import TheProductTable from '../components/TheProductTable.vue';
+import TheCart from '../components/TheCart.vue';
 
 export default {
   name: 'Choose',
