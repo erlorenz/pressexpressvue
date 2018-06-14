@@ -8,29 +8,29 @@
       <div class="schedule-form__location">
         <label class="hotel-label">Hotel Name</label>
         <select
-          v-model="scheduled.hotel"
-          class="schedule-form__hotel form-control">
+          v-model="form.hotel"
+          class="form-control">
           <option >Aria</option>
           <option >MGM Grand</option>
           <option >Venetian</option>
           <option >Wynn Las Vegas</option>
         </select>
         <input
-          v-model="scheduled.room"
+          v-model="form.room"
           type="text"
           class="schedule-form__room form-control" >
       </div>
       <div class="schedule-form__pickup-time">
         <select
-          v-model="scheduled.pickupDay"
-          class="schedule-form__pickup-day">
+          v-model="form.pickupDate"
+          class="form-control">
           <option>Wednesday, May 23</option>
           <option>Thursday, May 24</option>
           <option>Friday, May 25 </option>
         </select>
         <select
-          v-model="scheduled.pickupHour"
-          class="schedule-form__pickup-hour">
+          v-model="form.pickupHour"
+          class="form-control">
           <option>after 12pm</option>
           <option>after 2pm</option>
           <option>after 4pm</option>
@@ -40,30 +40,22 @@
       </div>
       <div class="schedule-form__return-time">
         <select
-          v-model="scheduled.returnDay"
-          class="schedule-form__return-day">
+          v-model="form.returnDate"
+          class="form-control">
           <option>Wednesday, May 23</option>
           <option>Thursday, May 24</option>
           <option>Friday, May 25 </option>
         </select>
         <select
-          v-model="scheduled.returnHour"
-          class="schedule-form__return-hour">
+          v-model="form.returnHour"
+          class="form-control">
           <option>by 7am</option>
           <option>by 3pm</option>
           <option>by 5pm</option>
           <option>by 7pm</option>
         </select>
       </div>
-      <div class="test">
-        {{ scheduled.hotel }} <br>
-        {{ scheduled.room }} <br>
-        {{ scheduled.pickupDay }} <br>
-        {{ scheduled.pickupHour }} <br>
-        {{ scheduled.returnDay }} <br>
-        {{ scheduled.returnHour }} <br>
 
-      </div>
       <div class="forward-back">
         <router-link
           :to="{ name: 'home' }"
@@ -73,10 +65,11 @@
           Go back
         </router-link>
         <router-link
-          :to="{ name: 'choose' }">
+          :to="{ name: 'choose' }"
+          :class="{disabled: !allFilledOut}">
           <button
             class="forward-button"
-            @click="ADD_TO_SCHEDULED(scheduled)">
+            @click="addScheduled()">
             Continue
           </button>
 
@@ -90,30 +83,44 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-
 export default {
   name: 'Schedule',
 
   data() {
     return {
-      scheduled: {
+      form: {
         hotel: '',
         room: '',
-        pickupDay: '',
+        pickupDate: '',
         pickupHour: '',
-        returnDay: '',
+        returnDate: '',
         returnHour: '',
       },
     };
   },
 
-  methods: {
-    ...mapMutations([
-      'ADD_TO_SCHEDULED',
-    ]),
+  computed: {
+    allFilledOut() {
+      if (
+        this.form.hotel &&
+        this.form.room &&
+        this.form.pickupDate &&
+        this.form.pickupHour &&
+        this.form.returnDate &&
+        this.form.returnHour
+      ) {
+        return true;
+      }
+      return false;
+    },
+
   },
 
+  methods: {
+    addScheduled() {
+      this.$store.commit('ADD_TO_SCHEDULED', this.form);
+    },
+  },
 };
 </script>
 
@@ -157,6 +164,11 @@ export default {
   .forward-button {
     background-color: $theme-color-secondary;
     color: #eee;
+  }
+
+  .disabled {
+    pointer-events: none;
+    opacity: 0.6;
   }
 }
 

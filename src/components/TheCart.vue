@@ -49,17 +49,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters([
-      'cartTotal',
-      'cartItems',
-    ]),
-
+    ...mapGetters(['cartTotal', 'cartItems']),
   },
 
   methods: {
-    ...mapMutations([
-      'REMOVE_FROM_CART',
-    ]),
+    ...mapMutations(['REMOVE_FROM_CART']),
   },
 };
 </script>

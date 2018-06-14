@@ -1,6 +1,6 @@
 import products from '@/store/products';
 
-/* eslint no-shadow: ["error", { "allow": ["state"] }] */
+/* eslint no-shadow: ["error", { "allow": ["state", "getters"] }] */
 /* eslint no-param-reassign: ["error",
 { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
 
@@ -21,6 +21,13 @@ const getters = {
       const totalPrice = cartItem.price * cartItem.quantity;
       return acc + totalPrice;
     }, 0),
+
+  totalPrice: (getters) => {
+    if (getters.cartTotal < 3000) {
+      return 3000;
+    }
+    return getters.cartTotal;
+  },
 };
 
 // actions

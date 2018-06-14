@@ -8,8 +8,11 @@ const state = {};
 
 const getters = {};
 
-// actions
+// Actions
+
 const actions = {};
+
+// Mutations
 
 const mutations = {};
 

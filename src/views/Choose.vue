@@ -10,7 +10,7 @@
 
     <div class="content-wrap">
       <the-product-table />
-      <the-cart v-if="this.$store.state.cart.added.length > 0"/>
+      <the-cart v-if="cartHasItems"/>
       <div
         v-else
         class="no-items"> You haven't selected any items </div>
@@ -24,7 +24,9 @@
       </router-link>
       <router-link
         :to="{ name: 'finish' }"
+        :class="{ disabled : !cartHasItems }"
         class="forward-button">
+
         Go to finish
       </router-link>
     </div>
@@ -43,6 +45,12 @@ export default {
   },
   data() {
     return {};
+  },
+
+  computed: {
+    cartHasItems() {
+      return this.$store.getters.cartItems.length > 0;
+    },
   },
 };
 </script>
@@ -104,6 +112,11 @@ h1 {
   .forward-button {
     background-color: $theme-color-secondary;
     color: #eee;
+  }
+
+  .disabled {
+    pointer-events: none;
+    opacity: 0.6;
   }
 }
 

@@ -14,15 +14,9 @@ const vuexLocal = new VuexPersist({
 });
 
 export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  },
+  state: {},
+  mutations: {},
+  actions: {},
 
   modules: {
     cart,
@@ -30,5 +24,4 @@ export default new Vuex.Store({
   },
 
   plugins: [vuexLocal.plugin],
-
 });
