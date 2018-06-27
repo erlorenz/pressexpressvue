@@ -31,6 +31,12 @@
         class="pay-with-stripe"
         @click.prevent="pay">Pay $____</button>
     </form>
+    <div v-if="checkoutStatus === 'pending'">
+      <p>PENDING</p>
+    </div>
+    <div v-if="checkoutStatus === 'error'">
+      <p>{{ errorMessage }}</p>
+    </div>
   </div>
 </template>
 
@@ -64,6 +70,12 @@ export default {
     },
     cartItems() {
       return this.$store.getters.cartItems;
+    },
+    checkoutStatus() {
+      return this.$store.getters.checkoutStatus;
+    },
+    errorMessage() {
+      return this.$store.getters.errorMessage;
     },
 
   },

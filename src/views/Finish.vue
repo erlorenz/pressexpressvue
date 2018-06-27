@@ -4,7 +4,6 @@
     <div class="content-wrap">
       <the-final />
       <the-checkout/>
-
     </div>
 
   </section>
@@ -29,6 +28,7 @@ export default {
       success: false,
     };
   },
+
 };
 </script>
 
