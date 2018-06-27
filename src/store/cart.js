@@ -34,11 +34,7 @@ const getters = {
 const actions = {};
 
 const mutations = {
-  ADD_TO_CART: (state, {
-    price,
-    id,
-    name
-  }) => {
+  ADD_TO_CART: (state, { price, id, name }) => {
     const record = state.added.find(p => p.id === id);
 
     if (!record) {

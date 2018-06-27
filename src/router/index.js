@@ -5,6 +5,7 @@ import Order from '@/views/Order.vue';
 import Schedule from '@/views/Schedule.vue';
 import Choose from '@/views/Choose.vue';
 import Finish from '@/views/Finish.vue';
+// import Success from '@/views/Success.vue';
 
 Vue.use(Router);
 
@@ -37,5 +38,10 @@ export default new Router({
         },
       ],
     },
+    // {
+    //   path: '/success',
+    //   name: 'success',
+    //   component: Success,
+    // },
   ],
 });

@@ -3,7 +3,8 @@
   <section id="choose">
     <div class="content-wrap">
       <the-final />
-      <the-checkout/>
+      <the-success v-if="success"/>
+      <the-checkout v-else/>
     </div>
 
   </section>
@@ -15,18 +16,25 @@
 <script>
 import TheCheckout from '../components/TheCheckout.vue';
 import TheFinal from '../components/TheFinal.vue';
+import TheSuccess from '../components/TheSuccess.vue';
 
 export default {
   name: 'Finish',
   components: {
     TheCheckout,
     TheFinal,
+    TheSuccess,
   },
 
   data() {
     return {
-      success: false,
     };
+  },
+
+  computed: {
+    success() {
+      return this.$store.getters.checkoutStatus === 'success';
+    },
   },
 
 };
