@@ -5,12 +5,18 @@ import Order from '@/views/Order.vue';
 import Schedule from '@/views/Schedule.vue';
 import Choose from '@/views/Choose.vue';
 import Finish from '@/views/Finish.vue';
-// import Success from '@/views/Success.vue';
+import Success from '@/views/Success.vue';
+import store from '@/store';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    {
+      path: '*',
+      name: 'home',
+      component: Home,
+    },
     {
       path: '/',
       name: 'home',
@@ -30,18 +36,39 @@ export default new Router({
           path: 'choose',
           name: 'choose',
           component: Choose,
+          beforeEnter(to, from, next) {
+            if (store.getters.isScheduled) {
+              next();
+            } else {
+              next('/order/schedule');
+            }
+          },
         },
         {
           path: 'finish',
           name: 'finish',
           component: Finish,
+          beforeEnter(to, from, next) {
+            if (store.getters.isScheduled && store.getters.cartItems.length > 0) {
+              next();
+            } else {
+              next('/order/choose');
+            }
+          },
         },
       ],
     },
-    // {
-    //   path: '/success',
-    //   name: 'success',
-    //   component: Success,
-    // },
+    {
+      path: '/success',
+      name: 'success',
+      component: Success,
+      beforeEnter(to, from, next) {
+        if (store.getters.checkedOut) {
+          next();
+        } else {
+          next('/order/finish');
+        }
+      },
+    },
   ],
 });

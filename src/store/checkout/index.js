@@ -55,13 +55,13 @@ const actions = {
       console.log(response.data);
 
       // Check if email, text worked
-      if (response.data.twilio.status === 'error') {
+      if (response.data.twilio === 'error') {
         allCheckoutData.twilioSent = false;
       } else {
         allCheckoutData.twilioSent = true;
       }
 
-      if (response.data.mailjet.status === 'error') {
+      if (response.data.mailjet === 'error') {
         allCheckoutData.mailjetSent = false;
       } else {
         allCheckoutData.mailjetSent = true;
@@ -85,18 +85,15 @@ const actions = {
       // Error response from server
       if (e.response) {
         errorMessage = e.response.data.message;
-        console.log(e.response);
 
         // No response from server
       } else if (e.request) {
         errorMessage = 'We are currently experiencing technical issues. Please try again later.';
-        console.log(e.request);
 
         // Misc exception
       } else {
         errorMessage = e.message;
       }
-      console.log(errorMessage);
       dispatch('checkoutError', errorMessage);
     }
   },
@@ -104,7 +101,7 @@ const actions = {
   checkoutError: async ({ commit }, errorMessage) => {
     commit('CHECKOUT_SHOW_ERROR', errorMessage);
 
-    await setTimeout(() => commit('CHECKOUT_HIDE_ERROR'), 3000);
+    await setTimeout(() => commit('CHECKOUT_HIDE_ERROR'), 5000);
   },
 };
 
@@ -120,6 +117,7 @@ const mutations = {
     state.textSent = twilioSent;
     state.emailSent = mailjetSent;
     state.requestPending = false;
+    console.log('mailjet:', mailjetSent);
   },
 
   CHECKOUT_SHOW_ERROR: (state, errorMessage) => {
@@ -133,6 +131,15 @@ const mutations = {
 
   CHECKOUT_PENDING: (state) => {
     state.requestPending = true;
+  },
+
+  RESET_ALL: (state) => {
+    state.emailSent = null;
+    state.textSent = null;
+    state.email = '';
+    state.phone = '';
+    state.checkedOut = false;
+    localStorage.removeItem('vuex');
   },
 };
 

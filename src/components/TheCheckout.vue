@@ -1,7 +1,9 @@
 <template>
   <div class="topInfo">
 
-    <form class="checkout-form">
+    <form
+      class="checkout-form"
+      @submit.prevent="pay">
       <input
         v-model="name"
         class="form-control"
@@ -29,12 +31,9 @@
       <button
         :disabled="!complete"
         class="pay-with-stripe"
-        @click.prevent="pay">Pay $____</button>
+        type="submit">Pay ${{ totalPrice / 100 }}</button>
     </form>
-    <div v-if="checkoutStatus === 'pending'">
-      <p>PENDING</p>
-    </div>
-    <div v-if="checkoutStatus === 'error'">
+    <div v-if="errorMessage">
       <p>{{ errorMessage }}</p>
     </div>
   </div>
@@ -71,9 +70,11 @@ export default {
     cartItems() {
       return this.$store.getters.cartItems;
     },
-    checkoutStatus() {
-      return this.$store.getters.checkoutStatus;
+
+    starch() {
+      return this.$store.getters.starch;
     },
+
     errorMessage() {
       return this.$store.getters.errorMessage;
     },
@@ -86,6 +87,7 @@ export default {
         scheduled: this.scheduled,
         totalPrice: this.totalPrice,
         cartItems: this.cartItems,
+        starch: this.starch,
         name: this.name,
         email: this.email,
         phone: this.phone,

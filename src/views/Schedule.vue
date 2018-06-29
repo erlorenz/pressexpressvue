@@ -132,7 +132,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 8rem 0;
+  padding: 8rem 5%;
   max-width: 768px;
 }
 

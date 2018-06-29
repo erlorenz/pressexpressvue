@@ -7,6 +7,7 @@ import products from '@/store/products';
 const state = {
   added: [],
   all: products,
+  starch: false,
 };
 
 // Getters
@@ -16,6 +17,7 @@ const getters = {
 
   cartItems: state => state.added,
 
+  starch: state => state.starch,
   cartTotal: state =>
     state.added.reduce((acc, cartItem) => {
       const totalPrice = cartItem.price * cartItem.quantity;
@@ -51,6 +53,10 @@ const mutations = {
 
   REMOVE_FROM_CART: (state, index) => {
     state.added.splice(index, 1);
+  },
+
+  CLEAR_CART: (state) => {
+    state.added = [];
   },
 };
 

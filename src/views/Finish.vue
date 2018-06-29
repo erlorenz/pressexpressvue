@@ -1,10 +1,20 @@
 <template>
 
   <section id="choose">
-    <div class="content-wrap">
+
+    <half-circle-spinner
+      v-if="requestPending"
+      :animation-duration="1000"
+      :size="200"
+      :color="'$theme-color-secondary'"
+      class="spinner"/>
+    <div
+      v-show="!requestPending"
+      class="content-wrap">
+
       <the-final />
-      <the-success v-if="success"/>
-      <the-checkout v-else/>
+      <the-checkout />
+
     </div>
 
   </section>
@@ -14,16 +24,17 @@
 
 
 <script>
+import { HalfCircleSpinner } from 'epic-spinners';
 import TheCheckout from '../components/TheCheckout.vue';
 import TheFinal from '../components/TheFinal.vue';
-import TheSuccess from '../components/TheSuccess.vue';
+
 
 export default {
   name: 'Finish',
   components: {
     TheCheckout,
     TheFinal,
-    TheSuccess,
+    HalfCircleSpinner,
   },
 
   data() {
@@ -32,8 +43,8 @@ export default {
   },
 
   computed: {
-    success() {
-      return this.$store.getters.checkoutStatus === 'success';
+    requestPending() {
+      return this.$store.getters.requestPending;
     },
   },
 
@@ -50,6 +61,9 @@ export default {
   justify-content: center;
 }
 
+.spinner {
+  align-self: center;
+}
 .content-wrap {
   width: 100%;
   max-width: 768px;

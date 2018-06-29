@@ -1,11 +1,11 @@
 <template>
 
   <header class="progress">
-    <a
-      class="progress__brand"
-      href="#">
+    <router-link
+      to="/sdfjkfs"
+      class="progress__brand">
       <img src="../assets/img/presslogo.png">
-    </a>
+    </router-link>
 
     <ul class="progress__steps-list">
       <li :class="{ 'active': $route.path == '/order/schedule' }">
