@@ -43,7 +43,7 @@ export default {
   height: 3.5rem;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   box-shadow: $shadow-low;
   z-index: 5;
 }

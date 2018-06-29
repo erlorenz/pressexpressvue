@@ -56,25 +56,24 @@
         </select>
       </div>
 
-      <div class="forward-back">
-        <router-link
-          :to="{ name: 'home' }"
-          tag="button"
-          type="button"
-          class="button button--outline">
-          Go back
-        </router-link>
-        <router-link
-          :to="{ name: 'choose' }"
-          :class="{disabled: !allFilledOut}"
-          tag="button"
-          class="button button--primary">
-          Continue
-        </router-link>
-
-      </div>
-
     </form>
+    <div class="forward-back">
+      <router-link
+        :to="{ name: 'home' }"
+        tag="button"
+        type="button"
+        class="button button--outline">
+        Go back
+      </router-link>
+      <router-link
+        :class="{disabled: !allFilledOut}"
+        :to="{ name: 'choose' }"
+        tag="button"
+        class="button button--primary">
+        Continue
+      </router-link>
+
+    </div>
 
   </section>
 
@@ -111,7 +110,7 @@ export default {
         return this.$store.getters.scheduledData.room;
       },
       set(value) {
-        this.$store.commit('UPDATE_ROOM', value);
+        this.$store.commit('UPDATE_ROOM', value.trim());
       },
     },
 
@@ -154,11 +153,6 @@ export default {
 
   },
 
-  // methods: {
-  //   addScheduled() {
-  //     this.$store.commit('ADD_TO_SCHEDULED', this.form);
-  //   },
-  // },
 };
 </script>
 
@@ -169,8 +163,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 8rem 5%;
   max-width: 768px;
 }
 
@@ -182,6 +174,5 @@ export default {
     position: relative;
   }
 }
-
 </style>
 

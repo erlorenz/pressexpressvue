@@ -1,7 +1,7 @@
 <template>
   <div id="order">
     <the-progress-bar />
-    <router-view />
+    <router-view class="order-pages"/>
   </div>
 
 </template>
@@ -23,5 +23,10 @@ export default {
 #order {
   background-color: $background-color;
   min-height: 100vh;
+}
+
+.order-pages {
+  padding: 15vh 5% 5% 5%;
+  text-align: center;
 }
 </style>

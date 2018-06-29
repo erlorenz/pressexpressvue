@@ -17,6 +17,7 @@ const state = {
 
 const getters = {
   scheduledData: state => state.scheduled,
+
   isScheduled(state) {
     const {
       hotel, room, pickupDate, pickupHour, returnDate, returnHour,
@@ -39,7 +40,14 @@ const mutations = {
   },
 
   CLEAR_SCHEDULED(state) {
-    state.scheduled = {};
+    state.scheduled = {
+      hotel: '',
+      room: '',
+      pickupDate: '',
+      pickupHour: '',
+      returnDate: '',
+      returnHour: '',
+    };
   },
 
   UPDATE_HOTEL(state, payload) {

@@ -108,9 +108,9 @@ const actions = {
 // ---------------------------------------------------Mutations
 
 const mutations = {
-  CHECKOUT_SUCCESS: (state, {
+  CHECKOUT_SUCCESS(state, {
     phone, email, twilioSent, mailjetSent,
-  }) => {
+  }) {
     state.checkedOut = true;
     state.phone = phone;
     state.email = email;
@@ -120,26 +120,25 @@ const mutations = {
     console.log('mailjet:', mailjetSent);
   },
 
-  CHECKOUT_SHOW_ERROR: (state, errorMessage) => {
+  CHECKOUT_SHOW_ERROR(state, errorMessage) {
     state.errorMessage = errorMessage;
     state.requestPending = false;
   },
 
-  CHECKOUT_HIDE_ERROR: (state) => {
+  CHECKOUT_HIDE_ERROR(state) {
     state.errorMessage = '';
   },
 
-  CHECKOUT_PENDING: (state) => {
+  CHECKOUT_PENDING(state) {
     state.requestPending = true;
   },
 
-  RESET_ALL: (state) => {
+  RESET_ALL(state) {
     state.emailSent = null;
     state.textSent = null;
     state.email = '';
     state.phone = '';
     state.checkedOut = false;
-    localStorage.removeItem('vuex');
   },
 };
 

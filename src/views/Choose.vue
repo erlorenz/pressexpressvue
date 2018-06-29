@@ -59,8 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 #choose {
-  text-align: center;
-  padding: 100px 5% 5% 5%;
 }
 
 h1 {
@@ -97,7 +95,6 @@ h1 {
   margin-bottom: 2rem;
   font-size: 1.1rem;
 }
-
 
 @media (min-width: 1024px) {
   .desktop-directions {

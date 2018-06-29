@@ -54,9 +54,6 @@ export default {
 
 <style lang="scss" scoped>
 #choose {
-  min-height: 100vh;
-  text-align: center;
-  padding: 100px 5%;
   display: flex;
   justify-content: center;
 }
