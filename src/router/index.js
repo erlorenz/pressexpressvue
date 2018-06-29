@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/views/Home.vue';
-import Order from '@/views/Order.vue';
-import Schedule from '@/views/Schedule.vue';
-import Choose from '@/views/Choose.vue';
-import Finish from '@/views/Finish.vue';
-import Success from '@/views/Success.vue';
 import store from '@/store';
+import Home from '@/views/Home.vue';
+
+const Order = () => import(/* webpackChunkName: "group-order" */ '@/views/Order.vue');
+const Schedule = () => import(/* webpackChunkName: "group-order" */ '@/views/Schedule.vue');
+const Choose = () => import(/* webpackChunkName: "group-order" */ '@/views/Choose.vue');
+const Finish = () => import(/* webpackChunkName: "group-order" */ '@/views/Finish.vue');
+const Success = () => import(/* webpackChunkName: "group-order" */ '@/views/Success.vue');
 
 Vue.use(Router);
 
