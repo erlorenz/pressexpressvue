@@ -19,18 +19,19 @@
     <div class="forward-back">
       <router-link
         :to="{ name: 'schedule' }"
-        class="back-button">
+        class="button button--outline">
         Go back
       </router-link>
       <router-link
         :to="{ name: 'finish' }"
+        :disabled="!cartHasItems"
         :class="{ disabled : !cartHasItems }"
-        class="forward-button">
-
+        class="button button--primary">
         Go to finish
       </router-link>
     </div>
-</section></template>
+  </section>
+</template>
 
 
 <script>
@@ -97,28 +98,6 @@ h1 {
   font-size: 1.1rem;
 }
 
-.forward-back {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  .back-button,
-  .forward-button {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-  }
-
-  .forward-button {
-    background-color: $theme-color-secondary;
-    color: #eee;
-  }
-
-  .disabled {
-    pointer-events: none;
-    opacity: 0.6;
-  }
-}
 
 @media (min-width: 1024px) {
   .desktop-directions {

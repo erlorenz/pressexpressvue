@@ -1,0 +1,30 @@
+
+// Buttons 
+
+.forward-back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+.button--outline {
+    background-color: transparent;
+    border: 2px solid black;
+  }
+
+.button--primary {
+    background-color: $theme-color-secondary;
+    color: #eee;
+  }
+
+.disabled {
+    opacity: 0.6;
+  }

@@ -29,8 +29,9 @@
         @change="complete = $event.complete"
       />
       <button
+        :class="{disabled: !complete}"
         :disabled="!complete"
-        class="pay-with-stripe"
+        class="button button--primary"
         type="submit">Pay ${{ totalPrice / 100 }}</button>
     </form>
     <div v-if="errorMessage">
@@ -113,11 +114,4 @@ export default {
   border-color: green;
 }
 
-.pay-with-stripe {
-  margin-top: 1rem;
-  padding: 1rem 1.5rem;
-  border: none;
-  background-color: $theme-color-secondary;
-  color: white;
-}
 </style>

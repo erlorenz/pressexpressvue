@@ -5,7 +5,7 @@
       <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
       <router-link
         :to="{ name: 'schedule' }"
-        class="hero__button">
+        class="button button--primary hero__button">
         Let's get started!
       </router-link>
     </div>
@@ -61,19 +61,8 @@ export default {
 }
 
 .hero__button {
-  border: none;
-  display: inline-block;
-  cursor: pointer;
-  color: white;
-  padding: 1em 2.5em;
   font-size: 1em;
-  box-shadow: $shadow-low;
-  box-shadow: none;
-  background: $theme-color-secondary;
-
-  &:hover {
-    background-color: $theme-color-secondary-dark;
-  }
+  padding: 1em 1.5em;
 }
 
 @media (min-width: 350px) {

@@ -18,6 +18,7 @@ const getters = {
   cartItems: state => state.added,
 
   starch: state => state.starch,
+
   cartTotal: state =>
     state.added.reduce((acc, cartItem) => {
       const totalPrice = cartItem.price * cartItem.quantity;

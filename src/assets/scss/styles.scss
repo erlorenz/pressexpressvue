@@ -1,5 +1,7 @@
-@import '/variables.scss';
-@import '/forms.scss';
+@import './variables.scss';
+@import './forms.scss';
+@import './components.scss';
+
 html {
   box-sizing: border-box;
   font-size: 100%;

@@ -8,7 +8,7 @@
       <div class="schedule-form__location">
         <label class="hotel-label">Hotel Name</label>
         <select
-          v-model="form.hotel"
+          v-model="hotel"
           class="form-control">
           <option >Aria</option>
           <option >MGM Grand</option>
@@ -16,20 +16,20 @@
           <option >Wynn Las Vegas</option>
         </select>
         <input
-          v-model="form.room"
+          v-model="room"
           type="text"
           class="schedule-form__room form-control" >
       </div>
       <div class="schedule-form__pickup-time">
         <select
-          v-model="form.pickupDate"
+          v-model="pickupDate"
           class="form-control">
           <option>Wednesday, May 23</option>
           <option>Thursday, May 24</option>
           <option>Friday, May 25 </option>
         </select>
         <select
-          v-model="form.pickupHour"
+          v-model="pickupHour"
           class="form-control">
           <option>after 12pm</option>
           <option>after 2pm</option>
@@ -40,14 +40,14 @@
       </div>
       <div class="schedule-form__return-time">
         <select
-          v-model="form.returnDate"
+          v-model="returnDate"
           class="form-control">
           <option>Wednesday, May 23</option>
           <option>Thursday, May 24</option>
           <option>Friday, May 25 </option>
         </select>
         <select
-          v-model="form.returnHour"
+          v-model="returnHour"
           class="form-control">
           <option>by 7am</option>
           <option>by 3pm</option>
@@ -61,19 +61,17 @@
           :to="{ name: 'home' }"
           tag="button"
           type="button"
-          class="back-button">
+          class="button button--outline">
           Go back
         </router-link>
         <router-link
           :to="{ name: 'choose' }"
-          :class="{disabled: !allFilledOut}">
-          <button
-            class="forward-button"
-            @click="addScheduled()">
-            Continue
-          </button>
-
+          :class="{disabled: !allFilledOut}"
+          tag="button"
+          class="button button--primary">
+          Continue
         </router-link>
+
       </div>
 
     </form>
@@ -83,44 +81,84 @@
 </template>
 
 <script>
+
 export default {
   name: 'Schedule',
 
   data() {
     return {
-      form: {
-        hotel: '',
-        room: '',
-        pickupDate: '',
-        pickupHour: '',
-        returnDate: '',
-        returnHour: '',
-      },
+
     };
   },
 
   computed: {
+
     allFilledOut() {
-      if (
-        this.form.hotel &&
-        this.form.room &&
-        this.form.pickupDate &&
-        this.form.pickupHour &&
-        this.form.returnDate &&
-        this.form.returnHour
-      ) {
-        return true;
-      }
-      return false;
+      return this.$store.getters.isScheduled;
     },
+
+    hotel: {
+      get() {
+        return this.$store.getters.scheduledData.hotel;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_HOTEL', value);
+      },
+    },
+
+    room: {
+      get() {
+        return this.$store.getters.scheduledData.room;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_ROOM', value);
+      },
+    },
+
+    pickupDate: {
+      get() {
+        return this.$store.getters.scheduledData.pickupDate;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_PICKUPDATE', value);
+      },
+    },
+
+    pickupHour: {
+      get() {
+        return this.$store.getters.scheduledData.pickupHour;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_PICKUPHOUR', value);
+      },
+    },
+
+    returnDate: {
+      get() {
+        return this.$store.getters.scheduledData.returnDate;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_RETURNDATE', value);
+      },
+    },
+
+    returnHour: {
+      get() {
+        return this.$store.getters.scheduledData.returnHour;
+      },
+      set(value) {
+        this.$store.commit('UPDATE_RETURNHOUR', value);
+      },
+    },
+
 
   },
 
-  methods: {
-    addScheduled() {
-      this.$store.commit('ADD_TO_SCHEDULED', this.form);
-    },
-  },
+  // methods: {
+  //   addScheduled() {
+  //     this.$store.commit('ADD_TO_SCHEDULED', this.form);
+  //   },
+  // },
 };
 </script>
 
@@ -145,33 +183,5 @@ export default {
   }
 }
 
-.forward-back {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  .back-button,
-  .forward-button {
-    display: inline-block;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    border: none;
-  }
-
-  .back-button {
-    background-color: transparent;
-  }
-  .forward-button {
-    background-color: $theme-color-secondary;
-    color: #eee;
-  }
-
-  .disabled {
-    pointer-events: none;
-    opacity: 0.6;
-  }
-}
-
-//Jumping labels
 </style>
 
