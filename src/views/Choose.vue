@@ -16,33 +16,25 @@
         class="no-items"> You haven't selected any items </div>
     </div>
 
-    <div class="forward-back">
-      <router-link
-        :to="{ name: 'schedule' }"
-        class="button button--outline">
-        Go back
-      </router-link>
-      <router-link
-        :to="{ name: 'finish' }"
-        :disabled="!cartHasItems"
-        :class="{ disabled : !cartHasItems }"
-        class="button button--primary">
-        Go to finish
-      </router-link>
-    </div>
+    <forward-back
+      :disable="!cartHasItems"
+      continue-to="finish"
+      back-to="schedule" />
   </section>
 </template>
 
 
 <script>
-import TheProductTable from '../components/TheProductTable.vue';
-import TheCart from '../components/TheCart.vue';
+import TheProductTable from '@/components/TheProductTable.vue';
+import TheCart from '@/components/TheCart.vue';
+import ForwardBack from '@/components/ForwardBack.vue';
 
 export default {
   name: 'Choose',
   components: {
     TheProductTable,
     TheCart,
+    ForwardBack,
   },
   data() {
     return {};
@@ -58,9 +50,6 @@ export default {
 
 
 <style lang="scss" scoped>
-#choose {
-}
-
 h1 {
   font-size: 1.1rem;
   font-weight: 500;

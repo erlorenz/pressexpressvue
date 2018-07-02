@@ -46,6 +46,12 @@ export default {
   flex-direction: column;
   background-color: $theme-color-primary;
   font-weight: 500;
+  transform: translateX(100%);
+  transition: 200ms all ease-in-out;
+
+  &--open {
+    transform: translateX(0);
+  }
 }
 
 .side-nav__top {

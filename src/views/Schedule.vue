@@ -4,23 +4,33 @@
 
     <h3>Awesome! Let's choose when you will be ready for
     us to pick up and when we need to return your clothes!</h3>
+
     <form class="schedule-form">
-      <div class="schedule-form__location">
-        <label class="hotel-label">Hotel Name</label>
+      <fieldset class="form-group">
+        <label>Hotel name</label>
         <select
           v-model="hotel"
           class="form-control">
-          <option >Aria</option>
-          <option >MGM Grand</option>
-          <option >Venetian</option>
-          <option >Wynn Las Vegas</option>
+          <option
+            disabled
+            value="">Select One</option>
+          <option>Aria</option>
+          <option>Wynn</option>
+          <option>Venetian</option>
+          <option>Park MGM</option>
         </select>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label>Room number</label>
         <input
           v-model="room"
           type="text"
-          class="schedule-form__room form-control" >
-      </div>
-      <div class="schedule-form__pickup-time">
+          class="form-control" >
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label>Pickup date</label>
         <select
           v-model="pickupDate"
           class="form-control">
@@ -28,6 +38,12 @@
           <option>Thursday, May 24</option>
           <option>Friday, May 25 </option>
         </select>
+      </fieldset>
+
+      <fieldset
+        v-if="pickupDate"
+        class="form-group">
+        <label >Pickup Time</label>
         <select
           v-model="pickupHour"
           class="form-control">
@@ -37,8 +53,12 @@
           <option>after 6pm</option>
           <option>after 8pm</option>
         </select>
-      </div>
-      <div class="schedule-form__return-time">
+      </fieldset>
+
+      <fieldset
+        v-if="pickupHour"
+        class="form-group">
+        <label>Return date</label>
         <select
           v-model="returnDate"
           class="form-control">
@@ -46,6 +66,12 @@
           <option>Thursday, May 24</option>
           <option>Friday, May 25 </option>
         </select>
+      </fieldset>
+
+      <fieldset
+        v-if="returnDate"
+        class="form-group">
+        <label>Return time</label>
         <select
           v-model="returnHour"
           class="form-control">
@@ -54,40 +80,25 @@
           <option>by 5pm</option>
           <option>by 7pm</option>
         </select>
-      </div>
+      </fieldset>
 
     </form>
-    <div class="forward-back">
-      <router-link
-        :to="{ name: 'home' }"
-        tag="button"
-        type="button"
-        class="button button--outline">
-        Go back
-      </router-link>
-      <router-link
-        :class="{disabled: !allFilledOut}"
-        :to="{ name: 'choose' }"
-        tag="button"
-        class="button button--primary">
-        Continue
-      </router-link>
-
-    </div>
-
+    <forward-back
+      :disable="!allFilledOut"
+      back-to="home"
+      continue-to="choose"/>
   </section>
 
 </template>
 
 <script>
+import ForwardBack from '@/components/ForwardBack.vue';
 
 export default {
   name: 'Schedule',
 
-  data() {
-    return {
-
-    };
+  components: {
+    ForwardBack,
   },
 
   computed: {
@@ -159,7 +170,7 @@ export default {
 
 <style lang="scss" scoped>
 #schedule {
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -167,8 +178,10 @@ export default {
 }
 
 .schedule-form {
-  margin: 2rem 0;
   display: block;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 1.5rem;
 
   &__location {
     position: relative;

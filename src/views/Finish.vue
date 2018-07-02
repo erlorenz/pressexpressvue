@@ -11,10 +11,8 @@
     <div
       v-show="!requestPending"
       class="content-wrap">
-
       <the-final />
       <the-checkout class="checkout"/>
-
     </div>
 
   </section>
@@ -25,8 +23,8 @@
 
 <script>
 import { HalfCircleSpinner } from 'epic-spinners';
-import TheCheckout from '../components/TheCheckout.vue';
-import TheFinal from '../components/TheFinal.vue';
+import TheCheckout from '@/components/TheCheckout.vue';
+import TheFinal from '@/components/TheFinal.vue';
 
 
 export default {
@@ -59,7 +57,7 @@ export default {
 }
 
 .spinner {
-  align-self: center;
+  margin-top: 20vh;
 }
 .content-wrap {
   width: 100%;

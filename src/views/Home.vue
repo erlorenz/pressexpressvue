@@ -1,7 +1,7 @@
 <template>
   <div>
     <the-side-nav
-      v-show="navIsOpen"
+      :class="{ 'side-nav--open' : navIsOpen }"
       @closeNav="navIsOpen = false"/>
     <the-navbar @openNav="navIsOpen = true"/>
     <the-hero />
