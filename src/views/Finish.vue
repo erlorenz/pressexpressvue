@@ -13,7 +13,7 @@
       class="content-wrap">
 
       <the-final />
-      <the-checkout />
+      <the-checkout class="checkout"/>
 
     </div>
 
@@ -64,5 +64,13 @@ export default {
 .content-wrap {
   width: 100%;
   max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout {
+  width: 100%;
+  max-width: 400px;
 }
 </style>

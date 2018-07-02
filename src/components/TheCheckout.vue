@@ -1,48 +1,82 @@
 <template>
-  <div class="topInfo">
+  <div>
 
     <form
       class="checkout-form"
-      @submit.prevent="pay">
-      <input
-        v-model="name"
-        class="form-control"
-        type="text"
-        placeholder="Name">
-      <input
-        v-model="email"
-        class="form-control"
-        type="email"
-        placeholder="Email">
-      <input
-        v-model="phone"
-        type="tel"
-        maxlength="10"
-        class="form-control"
-        placeholder="Phone Number">
+      @submit.prevent="onSubmit">
+
+      <fieldset class="form-group">
+        <label for="name">Full name</label>
+        <input
+          id="name"
+          v-model.trim="name"
+          :class="{ 'form-control--invalid': nameInvalid}"
+          class="form-control"
+          type="text"
+          @blur="$v.name.$touch">
+        <div
+          v-if="nameInvalid"
+          class="invalid-text">Please enter a valid name</div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          v-model.trim="email"
+          :class="{ 'form-control--invalid': emailInvalid}"
+          class="form-control"
+          type="text"
+          @blur="$v.email.$touch">
+        <div
+          v-if="emailInvalid"
+          class="invalid-text">Please enter a valid email</div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="phone">Mobile Number</label>
+        <input
+          id="phone"
+          v-model.trim="phone"
+          :class="{ 'form-control--invalid': phoneInvalid}"
+          class="form-control"
+          type="tel"
+          maxlength="10"
+          @blur="$v.phone.$touch">
+        <div
+          v-if="phoneInvalid"
+          class="invalid-text">Please enter a 10 digit phone number</div>
+      </fieldset>
+
       <!--STRIPE CARD-->
-      <card
-        :class="{ complete }"
-        :options="stripeOptions"
-        class="stripe-card form-control"
-        stripe="pk_test_P7koy0LWfaLHUtJaCPnU73bl"
-        @change="complete = $event.complete"
-      />
+      <fieldset class="form-group">
+        <label >Credit Card Details</label>
+        <card
+          :class="{ valid: stripeComplete }"
+          :options="stripeOptions"
+          stripe="pk_test_P7koy0LWfaLHUtJaCPnU73bl"
+          @change="stripeComplete = $event.complete"
+        />
+      </fieldset>
+
       <button
         :class="{disabled: !complete}"
         :disabled="!complete"
         class="button button--primary"
         type="submit">Pay ${{ totalPrice / 100 }}</button>
     </form>
-    <div v-if="errorMessage">
+    <div v-if="otherError">
       <p>{{ errorMessage }}</p>
     </div>
   </div>
 </template>
 
 <script>
-
+import { required, email, numeric, minLength, maxLength } from 'vuelidate/lib/validators';
 import { Card } from 'vue-stripe-elements-plus';
+
+const nameHasSpace = value => value.split(' ').length > 1;
+
 
 export default {
   name: 'TheCheckout',
@@ -54,64 +88,70 @@ export default {
       name: '',
       email: '',
       phone: '',
-      complete: false,
+      stripeComplete: false,
       stripeOptions: {
-        // enter options here
+        classes: {
+          base: 'form-control',
+          focus: 'form-control--focus',
+          invalid: 'form-control--invalid',
+        },
+        style: {
+          invalid: { color: 'rgb(65,7,7' },
+        },
       },
     };
   },
 
   computed: {
-    scheduled() {
-      return this.$store.getters.scheduledData;
-    },
-    totalPrice() {
-      return this.$store.getters.totalPrice;
-    },
-    cartItems() {
-      return this.$store.getters.cartItems;
+
+    totalPrice() { return this.$store.getters.totalPrice; },
+
+    errorMessage() { return this.$store.getters.errorMessage; },
+
+    emailInvalid() { return this.$v.email.$error || this.errorMessage === 'BAD EMAIL'; },
+
+    nameInvalid() { return this.$v.name.$error || this.errorMessage === 'BAD NAME'; },
+
+    phoneInvalid() { return this.$v.phone.$error || this.errorMessage === 'BAD PHONE'; },
+
+    otherError() {
+      if (this.errorMessage && !this.emailInvalid && !this.nameInvalid
+       && !this.phoneInvalid && !this.hotelInvalid) { return true; }
+      return false;
     },
 
-    starch() {
-      return this.$store.getters.starch;
-    },
-
-    errorMessage() {
-      return this.$store.getters.errorMessage;
+    complete() {
+      return !this.$v.$invalid && this.stripeComplete;
     },
 
   },
 
+  validations: {
+    email: { email, required },
+    name: { nameHasSpace, required },
+    phone: {
+      numeric, required, minLength: minLength(10), maxLength: maxLength(10),
+    },
+
+
+  },
+
   methods: {
-    pay() {
+    onSubmit() {
       const payload = {
-        scheduled: this.scheduled,
-        totalPrice: this.totalPrice,
-        cartItems: this.cartItems,
-        starch: this.starch,
         name: this.name,
         email: this.email,
         phone: this.phone,
       };
-      this.$store.dispatch('checkout', payload);
+      this.$v.$touch();
+      if (this.$v.$invalid) { console.log('Invalid'); } else { this.$store.dispatch('checkout', payload); }
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.checkout-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.button {
+  margin-top: 1rem;
 }
-
-.stripe-card {
-  background-color: white;
-  width: 300px;
-}
-.stripe-card.complete {
-  border-color: green;
-}
-
 </style>

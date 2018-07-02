@@ -13,6 +13,7 @@
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vue-stripe-elements-plus": "^0.2.8",
+    "vuelidate": "^0.7.4",
     "vuex": "^3.0.1",
     "vuex-persist": "^1.4.3"
   },

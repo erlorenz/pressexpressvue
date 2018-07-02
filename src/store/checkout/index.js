@@ -32,8 +32,12 @@ const getters = {
 // --------------------------------------Actions
 
 const actions = {
-  checkout: async ({ commit, dispatch }, payload) => {
+  checkout: async ({ commit, dispatch, getters: g }, payload) => {
     const allCheckoutData = payload;
+    allCheckoutData.scheduled = g.scheduledData;
+    allCheckoutData.totalPrice = g.totalPrice;
+    allCheckoutData.cartItems = g.cartItems;
+    allCheckoutData.starch = g.starch;
 
     // Start the spinner
     commit('CHECKOUT_PENDING');
@@ -41,7 +45,7 @@ const actions = {
     try {
       // Final validation
       validation(allCheckoutData);
-
+      console.log('It worked:', allCheckoutData);
       // Get stripe token
       const data = await createToken();
       console.log(data.token.id);
