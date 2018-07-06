@@ -48,6 +48,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.forward-back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .button {
   margin: 1rem 0;
 }
